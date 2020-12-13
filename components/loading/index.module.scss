@@ -1,0 +1,46 @@
+@keyframes loading {
+  0% {
+    background-image: url("~@/assets/ani1.png");
+  }
+  17% {
+    background-image: url("~@/assets/ani2.png");
+  }
+  33% {
+    background-image: url("~@/assets/ani3.png");
+  }
+  50% {
+    background-image: url("~@/assets/ani4.png");
+  }
+  67% {
+    background-image: url("~@/assets/ani5.png");
+  }
+  83% {
+    background-image: url("~@/assets/ani1.png");
+  }
+  100% {
+    background-image: url("~@/assets/ani1.png");
+  }
+}
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  .loading-shape {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: loading 1.5s linear 0s infinite;
+  }
+}
+.hide {
+  display: none;
+}

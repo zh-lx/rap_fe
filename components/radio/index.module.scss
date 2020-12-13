@@ -1,0 +1,47 @@
+@import '~@/styles/color.scss';
+.btn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  .radio {
+    padding: 0 8px;
+    font-size: 14PX;
+    height: 28PX;
+    line-height: 28PX;
+    text-align: center;
+    border: 1PX solid $common-border;
+    border-right: none;
+    &:last-of-type {
+      border-right: 1PX solid $common-border;
+    }
+  }
+  .active {
+    background-color: $common-blue;
+    border: 1PX solid $common-blue;
+    color: #fff;
+    &:last-of-type {
+      border-right: 1PX solid $common-blue;
+    }
+    & + .radio {
+      border-left: none;
+    }
+  }
+}
+
+.tab {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  .radio {
+    padding: 0 7px;
+    font-size: 14PX;
+    height: 28PX;
+    line-height: 28PX;
+    text-align: center;
+    border-bottom: 2PX solid $common-border;
+  }
+  .active {
+    color: $common-blue;
+    border-bottom: 2PX solid $common-blue;
+  }
+}
