@@ -62,6 +62,8 @@
       font-size: 14PX;
       padding: 0 8PX;
       height: 0;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
       -webkit-user-select: none;
       -moz-user-select: none;
       -khtml-user-select: none;
@@ -69,22 +71,22 @@
     }
     .rate-hot {
       background-color: #fff1f0;
-      border: 0.01rem solid #ffccc7;
+      border: 1px solid #ffccc7;
       color: #f5222d;
     }
     .rate-popular {
       background-color: #fffbe6;
-      border: 0.01rem solid #fff1b8;
+      border: 1px solid #fff1b8;
       color: #faad14;
     }
     .rate-common {
       background-color: #e6fffb;
-      border: 0.01rem solid #b5f5ec;
+      border: 1px solid #b5f5ec;
       color: #13c2c2;
     }
     .rate-rare {
       background-color: #fafafa;
-      border: 0.01rem solid #f5f5f5;
+      border: 1px solid #f5f5f5;
       color: #bfbfbf;
     }
   }
