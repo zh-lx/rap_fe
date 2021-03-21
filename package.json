@@ -4,8 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "next build && npm run start",
+    "start": "next start -p $PORT",
+    "build:prod": "next build && PORT=3000 npm run start",
+    "build:test": "next build && PORT=3001 npm run start",
+    "start:prod": "pm2 start yarn --name rap-fe-prod -- build:pord",
+    "start:test": "pm2 start yarn --name rap-fe-test -- build:test"
   },
   "dependencies": {
     "lib-flexible": "^0.3.2",
