@@ -38,15 +38,16 @@ export default function Index() {
       return;
     }
     getRhythms();
-  }, [rapNum, toneType]);
+  }, [rapNum, toneType, wordLength]);
   // 请求韵脚
   const getRhythms = async () => {
     setShowLoading(true);
-    const res = await $fetch.get('/rap/summary', {
+    const res = await $fetch.get('/api/words/get_words', {
       data: {
         word,
         rap_num: rapNum,
         tone_type: toneType,
+        length: wordLength,
       },
     });
     setShowLoading(false);
