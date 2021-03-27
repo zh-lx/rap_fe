@@ -2,6 +2,7 @@ import styles from 'styles/Index.module.scss';
 import Head from 'next/head';
 import RadioGroup from 'components/radio';
 import Loading from 'components/loading';
+import Empty from 'components/empty';
 import { useEffect, useRef, useState } from 'react';
 import { $fetch } from 'utils/request';
 import {
@@ -21,7 +22,7 @@ type Rhythm = {
   type_with_tone: string;
   type_without_tone: string;
 };
-type Result = [Rhythm[], Rhythm[], Rhythm[], Rhythm[]];
+type Result = Rhythm[];
 
 export default function Index() {
   const [word, setWord] = useState<string>(''); // 要查询押韵的韵脚
@@ -29,7 +30,8 @@ export default function Index() {
   const [toneType, setToneType] = useState<number>(0); // (音调不限、尾调一致等)
   const [wordLength, setWordLength] = useState<number>(2); // 词长
   const [showLoading, setShowLoading] = useState<boolean>(false); // 显示loading
-  const [result, setResult] = useState<Result>([[], [], [], []]); // 结果
+  const [showEmpty, setShowEmpty] = useState<boolean>(false); // 显示empty
+  const [result, setResult] = useState<Result>([]); // 结果
   const isInit = useRef<boolean>(true); // 是否初始化
   // 监听请求韵脚
   useEffect(() => {
@@ -53,6 +55,7 @@ export default function Index() {
     setShowLoading(false);
     if (res.code === 0) {
       setResult(res.data);
+      setShowEmpty(res.data.length === 0);
     }
   };
   // 输入值改变
@@ -126,7 +129,7 @@ export default function Index() {
           }}
         />
         <div className={styles['rhythms-box']}>
-          {result[wordLength - 2].map((rhythm) => {
+          {result.map((rhythm) => {
             return (
               <span
                 className={`${styles.rhythm} ${
@@ -139,7 +142,7 @@ export default function Index() {
             );
           })}
           {/* 占位补充 */}
-          {result[wordLength - 2].length > 0 &&
+          {result.length > 0 &&
             Array.from({ length: 10 }).map((item, index) => {
               return (
                 <span className={styles['placeholder-rhythm']} key={index}>
@@ -148,6 +151,7 @@ export default function Index() {
               );
             })}
         </div>
+        {showEmpty && <Empty />}
       </div>
       <Loading show={showLoading} />
     </div>
