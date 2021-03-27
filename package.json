@@ -5,7 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "start_prod": "next start -p 3000",
+    "start_test": "next start -p 3001",
+    "start:prod": "next build && pm2 start npm --name rap-fe-prod -- run start_prod",
+    "start:test": "next build && pm2 start npm --name rap-fe-test -- run start_test",
+    "restart:prod": "next build && pm2 restart npm --name rap-fe-prod -- run start_prod",
+    "restart:test": "next build && pm2 restart npm --name rap-fe-test -- run start_test"
   },
   "dependencies": {
     "lib-flexible": "^0.3.2",
